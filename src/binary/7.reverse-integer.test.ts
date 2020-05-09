@@ -22,7 +22,7 @@ describe("7. Reverse Integer", () => {
     assert.equal(rev, expected);
   });
   it("Input: 99999999999, Output: 0", () => {
-    const expected = 2;
+    const expected = 0;
     const input = 99999999999;
     const rev = reverse(input);
     assert.equal(rev, expected);

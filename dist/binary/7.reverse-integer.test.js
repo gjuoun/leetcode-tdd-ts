@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const assert_1 = __importDefault(require("assert"));
 const _7_reverse_integer_1 = require("./7.reverse-integer");
+const assert_1 = __importDefault(require("assert"));
 describe("7. Reverse Integer", () => {
     it("Input: 123, Output: 321", () => {
         const expected = 321;

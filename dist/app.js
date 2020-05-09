@@ -15,5 +15,8 @@ if (process.env.NODE_ENV !== "production") {
     dotenv_1.default.config();
 }
 const logger_1 = __importStar(require("./logger"));
+const fs_1 = __importDefault(require("fs"));
 const logger = logger_1.default.getConsoleLogger("app", logger_1.LOGGING_LEVEL.SILLY);
+const file = fs_1.default.readFileSync('./tsconfig.json');
+logger.info(file.toString().split('').slice(10, 40).join(''));
 //# sourceMappingURL=app.js.map

@@ -10,7 +10,6 @@ let hammingDistance1 = function (x: number, y: number): number {
     y >>= 1
   }
   return result
-
 };
 
 

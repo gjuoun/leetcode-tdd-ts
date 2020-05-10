@@ -2,25 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 let totalHammingDistance = function (nums) {
     let ans = 0;
-    for (let i = 0; i < nums.length - 1; i++) {
-        let x = nums[i];
-        for (let j = i + 1; j < nums.length; j++) {
-            let y = nums[j];
-            ans += getHammingDistance(x, y);
+    let mask = 1;
+    for (let i = 0; i < 32; i++) {
+        let ones = 0, zeros = 0;
+        for (let num of nums) {
+            if ((num & mask)) {
+                ones++;
+            }
         }
+        zeros = nums.length - ones;
+        ans += zeros * ones;
+        mask = mask << 1;
     }
     ;
     return ans;
 };
 exports.totalHammingDistance = totalHammingDistance;
-function getHammingDistance(x, y) {
-    let res = 0;
-    let xor = x ^ y;
-    while (xor > 0) {
-        if (xor % 2 === 1)
-            res++;
-        xor = xor >> 1;
-    }
-    return res;
-}
 //# sourceMappingURL=477. Total Hamming Distance.js.map

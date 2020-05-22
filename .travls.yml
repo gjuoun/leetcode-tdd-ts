@@ -3,9 +3,7 @@ node_js:
   - 14
 
 env:
-  - NODE_ENV=development
-  - JWT_ACCESS_TOKEN_SECRET=12345
-  - JWT_REFRESH_TOKEN_SECRET=34567
+  - NODE_ENV=production
 
 install:
   - npm install

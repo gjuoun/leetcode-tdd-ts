@@ -5,6 +5,4 @@ const numberOfOneBits = (x: number): number => {
   return ones
 };
 
-console.log(numberOfOneBits(parseInt("00000000000000000000000010000000", 2))
-)
 export { numberOfOneBits };

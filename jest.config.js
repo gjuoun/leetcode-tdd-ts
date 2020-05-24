@@ -1,7 +1,7 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  roots: ["<rootDir>/src/slidingWindow"],
+  roots: ["<rootDir>/src/slidingWindow_2"],
   transform: {
     "^.+.ts$": "ts-jest",
   },

@@ -1,32 +1,57 @@
 // longest_substring_with_k_distinct_characters
 
 
+// const longest_substring_with_k_distinct_characters = function (str: string, k: number): number {
+//   let map = new Map()
+//   let max = 0
+//   let windowStart = 0
+
+//   for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+//     let rightChar = str[windowEnd]
+//     if (!map.has(rightChar)) {
+//       map.set(rightChar, 0)
+//     } else {
+//       map.set(rightChar, map.get(rightChar + 1))
+//     }
+
+//     while (map.size > k) {
+//       let leftChar = str[windowStart]
+//       map.delete(leftChar)
+//       windowStart++
+//     }
+
+//     max = Math.max(max, 1+ windowEnd - windowStart )
+//   }
+
+//   return max
+// };
+
+// time complexity: O(n), space complexity: O(1)
+
 const longest_substring_with_k_distinct_characters = function (str: string, k: number): number {
   let map = new Map()
-  let max = 0
-  let windowStart = 0
+  let max = 0, windowStart = 0, windowEnd = 0
 
-  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+  for (windowEnd = 0; windowEnd < str.length; windowEnd++) {
     let rightChar = str[windowEnd]
     if (!map.has(rightChar)) {
-      map.set(rightChar, 0)
+      map.set(rightChar, 1)
     } else {
-      map.set(rightChar, map.get(rightChar + 1))
+      map.set(rightChar, map.get(rightChar) + 1)
     }
 
     while (map.size > k) {
       let leftChar = str[windowStart]
+      windowStart += 1
       map.delete(leftChar)
-      windowStart++
     }
 
-    max = Math.max(max, 1+ windowEnd - windowStart )
+    let windowLength = (windowEnd - windowStart) + 1
+    max = Math.max(max, windowLength)
   }
 
   return max
 };
-
-// time complexity: O(n), space complexity: O(1)
 
 
 describe("longest_substring_with_k_distinct_characters", () => {

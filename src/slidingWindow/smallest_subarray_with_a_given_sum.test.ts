@@ -1,14 +1,30 @@
 
+// const smallest_subarray_with_a_given_sum = function (s: number, arr: number[]): number {
+//   let sum = 0, min = Infinity, start = 0
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i]
+//     while (sum >= s) {
+//       min = Math.min(min, i - start + 1)
+//       sum -= arr[start]
+//       start++
+//     }
+//   }
+//   return min
+// };
+
 const smallest_subarray_with_a_given_sum = function (s: number, arr: number[]): number {
   let sum = 0, min = Infinity, start = 0
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i]
-    while (sum >= s) {
-      min = Math.min(min, i - start + 1)
+
+  for(let end = 0; end< arr.length; end++){
+    sum+= arr[end]
+    while(sum >= s){
+      let windowLength = (end - start) + 1
+      min = Math.min(min, windowLength)
       sum -= arr[start]
-      start++
+      start +=1
     }
   }
+
   return min
 };
 

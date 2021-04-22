@@ -55,9 +55,9 @@ const rotate = (arr: number[]) => {
 }
 
 
-let A: number[], K: number, output: number[]
 describe('Cyclic Rotation', function () {
 
+  let A: number[], K: number, output: number[]
   it('A = [], K =3, output = [] ', function () {
     A = [], K = 3, output = []
     expect(cyclicRotation(A, K)).toEqual(output)

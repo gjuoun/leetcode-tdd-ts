@@ -3,8 +3,6 @@ function nameSurnameAge(name: string, surname: string, age: number) {
   return name.slice(0, 2)+ surname.slice(0, 2) + age
 }
 
-
-
 describe("demo test 1", () => {
   let name: string, surname: string, age: number, output: string
 

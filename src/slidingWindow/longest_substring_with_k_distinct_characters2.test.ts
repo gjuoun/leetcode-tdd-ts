@@ -41,10 +41,12 @@ const longest_substring_with_k_distinct_characters2 = function (str: string, k: 
     }
 
     let mapSize = Array.from(Object.keys(map)).length
-    if(mapSize > k ){
+    while(mapSize > k ){
       let leftChar = str[windowStart] 
       delete map[leftChar]
       windowStart += 1
+      // recalculate the mapSize
+      mapSize = Array.from(Object.keys(map)).length
     }
 
     let windowLength = (windowEnd + 1) - windowStart

@@ -38,4 +38,9 @@ describe("demo test 1", () => {
     expect(daysOfTheWeek(day, later)).toBe(output)
   });
 
+  it(`day = "Tue", later = 14, output = "Tue"`, () => {
+    day = "Tue", later = 14, output = "Tue"
+    expect(daysOfTheWeek(day, later)).toBe(output)
+  });
+
 })

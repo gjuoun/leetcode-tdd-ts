@@ -1,18 +1,19 @@
+const max_sub_array_of_size_k = (k: number, arr: number[]): number => {
+  let sum = 0, max = 0, startIndex = 0
 
-const max_sub_array_of_size_k = function (k: number, arr: number[]): number {
-  let sum = 0, max = 0, start = 0
+  for (let endIndex = 0; endIndex < arr.length; endIndex++) {
 
-  for (let end = 0; end < arr.length; end++) {
-    sum += arr[end]
-    // end => 0,1,2 , k=3, need to reduce the end number   
-    if (end >= k - 1) {
+    sum = sum + arr[endIndex]
+
+    if (endIndex > k - 1) {
+      sum = sum - arr[startIndex]
       max = Math.max(max, sum)
-      sum = sum - arr[start]
-      start++;
+      startIndex++
     }
   }
+
   return max
-};
+}
 
 
 

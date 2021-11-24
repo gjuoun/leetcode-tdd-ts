@@ -1,38 +1,32 @@
-// length_of_longest_substring
 
+const length_of_longest_substring_same = (input: string, k: number) => {
+  let windowStart = 0, windowEnd = 0;
+  let maxRepeat = 0, max = 0;
+  let letterMap: Record<string, number> = {}
 
-const length_of_longest_substring_same = function (str: string, k: number): number {
-  let windowStart = 0, windowEnd, windowSize
-  let freqMap = new Map<string, number>()
-  let maxRepeat = 0, max = 0
-
-  for (windowEnd = 0; windowEnd < str.length; windowEnd++) {
-    let rightChar = str[windowEnd]
-    if (!freqMap.has(rightChar)) {
-      freqMap.set(rightChar, 0)
+  for (windowEnd = 0; windowEnd < input.length; windowEnd++) {
+    let rightChar = input[windowEnd]
+    if (!letterMap[rightChar]) {
+      letterMap[rightChar] = 0
     }
-    // char frequency + 1
-    freqMap.set(rightChar, freqMap.get(rightChar)! + 1)
-    maxRepeat = Math.max(maxRepeat, freqMap.get(rightChar)!)
-    windowSize = getWindowSize(windowStart, windowEnd)
 
-    // window size > failure tolerant + repeated chars
-    if (windowSize - maxRepeat > k ) {
-      let leftChar = str[windowStart]
-      freqMap.set(leftChar, freqMap.get(leftChar)! - 1);
+    // add one count to the frequency
+    letterMap[rightChar] = letterMap[rightChar] + 1
+    maxRepeat = Math.max(maxRepeat, letterMap[rightChar])
+
+    const currWindowSize = (windowEnd - windowStart) + 1
+    const remainingLetters = currWindowSize - maxRepeat
+    if (remainingLetters > k) {
+      const leftChar = input[windowStart]
+      letterMap[leftChar] = letterMap[leftChar] - 1
       windowStart++
     }
 
-    let newWindowSize = getWindowSize(windowStart, windowEnd)
-    // exact window size = failure tolerant + repeated chars
-    max = Math.max(max, newWindowSize)
+    const finalWindowSize = (windowEnd - windowStart) + 1
+    max = Math.max(max, finalWindowSize)
   }
 
   return max
-};
-
-function getWindowSize(windowStart: number, windowEnd: number) {
-  return windowEnd + 1 - windowStart
 }
 
 

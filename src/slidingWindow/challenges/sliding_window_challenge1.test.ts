@@ -69,3 +69,4 @@ describe("Permutation in a String (hard)#", () => {
     expect(find_permutation(input, pattern)).toBe(output)
   })
 })
+

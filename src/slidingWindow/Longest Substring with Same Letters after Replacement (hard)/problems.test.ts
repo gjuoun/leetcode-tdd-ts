@@ -1,25 +1,30 @@
 
 const length_of_longest_substring_same = (input: string, k: number) => {
   let windowStart = 0, windowEnd = 0;
-  let maxRepeat = 0, max = 0;
+  let maxRepeatCount = 0, max = 0;
   let letterMap: Record<string, number> = {}
 
   for (windowEnd = 0; windowEnd < input.length; windowEnd++) {
     let rightChar = input[windowEnd]
     if (!letterMap[rightChar]) {
-      letterMap[rightChar] = 0
+      letterMap[rightChar] = 1
+    }else{
+      // add one count to the frequency
+      letterMap[rightChar] = letterMap[rightChar] + 1
     }
 
-    // add one count to the frequency
-    letterMap[rightChar] = letterMap[rightChar] + 1
-    maxRepeat = Math.max(maxRepeat, letterMap[rightChar])
+    maxRepeatCount = Math.max(maxRepeatCount, letterMap[rightChar]) // maxRepeat = 2 at `bccbb`
 
     const currWindowSize = (windowEnd - windowStart) + 1
-    const remainingLetters = currWindowSize - maxRepeat
+    const remainingLetters = currWindowSize - maxRepeatCount // aabccbb at `bccbb` -> remainingLetters = 
+
+    // too many remaining letters, should shrink the window
     if (remainingLetters > k) {
       const leftChar = input[windowStart]
-      letterMap[leftChar] = letterMap[leftChar] - 1
+      letterMap[leftChar] = letterMap[leftChar] - 1 // reduce the frequency of the leftChar
       windowStart++
+    }else{
+      // remaining letters <= k, meaning we can replace the rest of the letters
     }
 
     const finalWindowSize = (windowEnd - windowStart) + 1
@@ -32,7 +37,7 @@ const length_of_longest_substring_same = (input: string, k: number) => {
 
 describe("length_of_longest_substring_same", () => {
   it("input = 'aabccbb', k = 2, output = 5;", () => {
-    const input = "aabccbb", k = 2, output = 5;
+    const input = "aabccbb", k = 2, output = 3;
     expect(length_of_longest_substring_same(input, k)).toBe(output)
   });
 

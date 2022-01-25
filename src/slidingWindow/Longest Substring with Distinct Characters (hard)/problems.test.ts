@@ -8,7 +8,7 @@ const length_of_longest_substring = (input: string) => {
     const rightChar = input[endIndex]
 
     if (map.has(rightChar)) {
-      startIndex = Math.max(startIndex, map.get(rightChar)! + 1)
+      startIndex =  Math.max(startIndex ,map.get(rightChar)! + 1)
     }
 
 
@@ -40,6 +40,12 @@ describe("no_repeat_substring", () => {
 
   it("input = 'abccde', output = 3", () => {
     const input = "abccde", output = 3
+    expect(length_of_longest_substring(input)).toBe(output)
+  });
+
+  it("input = 'abcbacb', output = 3", () => {
+    const input = "abcbacb", output = 3
+    // when it reaches the second 'a', startIndex is ahead of rightChar, at 'b'
     expect(length_of_longest_substring(input)).toBe(output)
   });
 

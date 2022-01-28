@@ -58,29 +58,35 @@
 
 
 const longest_substring_with_k_distinct = (str: string, k: number) => {
-  let startIndex = 0, max = 0
-  let map = new Map()
+  let windowStart = 0, maxLength = 0;
+  let map = new Map<string, number>()
 
-  for (let endIndex = 0; endIndex < str.length; endIndex++) {
-    const rightChar = str[endIndex]
-    if (!map.has(rightChar)) {
-      map.set(rightChar, 1)
+  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+    const rightChar = str[windowEnd]
+
+    if (map.has(rightChar)) {
+      map.set(rightChar, map.get(rightChar)! + 1)
     } else {
-      map.set(rightChar, map.get(rightChar) + 1)
+      map.set(rightChar, 1)
     }
+
 
     while (map.size > k) {
-      const leftChar = str[startIndex]
+      const leftChar = str[windowStart] //?
+      if (map.get(leftChar) === 1) {
+        map.delete(leftChar)
+      } else {
+        map.set(leftChar, map.get(leftChar)! - 1)
+      }
+      windowStart += 1
       map.delete(leftChar)
-      startIndex += 1
     }
 
-    const windowLength = (endIndex + 1) - startIndex
-    max = Math.max(max, windowLength)
+    const windowSize = (windowEnd - windowStart) + 1  //?
+    maxLength = Math.max(windowSize, maxLength) //?
   }
 
-
-  return max
+  return maxLength //? 
 }
 
 

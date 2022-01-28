@@ -19,5 +19,5 @@ const smallest_subarray_with_a_greater_sum_quokka = (input: number[], s: number)
 }
 
 
-console.log(smallest_subarray_with_a_greater_sum([2, 1, 5, 2, 3, 2], 7)); // shoule be 2
+console.log(smallest_subarray_with_a_greater_sum_quokka([2, 1, 5, 2, 3, 2], 7)); // shoule be 2
 

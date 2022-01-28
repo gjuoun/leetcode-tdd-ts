@@ -1,35 +1,71 @@
-const max_sub_array_of_size_k = (k: number, arr: number[]): number => {
-  let sum = 0, max = 0, startIndex = 0
+/*
+Problem Statement#
+Given an array of positive numbers and a positive number ‘S,’ find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’. Return 0 if no such subarray exists.
 
-  for (let endIndex = 0; endIndex < arr.length; endIndex++) {
+Example 1:
 
-    sum = sum + arr[endIndex]
+Input: [2, 1, 5, 2, 3, 2], S=7 
+Output: 2
+Explanation: The smallest subarray with a sum greater than or equal to '7' is [5, 2].
 
-    if (endIndex > k - 1) {
-      sum = sum - arr[startIndex]
-      max = Math.max(max, sum)
-      startIndex++
+Example 2:
+
+Input: [2, 1, 5, 2, 8], S=7 
+Output: 1
+Explanation: The smallest subarray with a sum greater than or equal to '7' is [8].
+
+Example 3:
+
+Input: [3, 4, 1, 1, 6], S=8 
+Output: 3
+Explanation: Smallest subarrays with a sum greater than or equal to '8' are [3, 4, 1] 
+or [1, 1, 6].
+
+*/
+
+const smallest_subarray_with_a_greater_sum = (input: number[], s: number): number => {
+  let minLength = Infinity, windowStart = 0
+  let windowSum = 0
+
+
+  for (let windowEnd = 0; windowEnd < input.length; windowEnd++) {
+    windowSum += input[windowEnd] //?
+
+    while (windowSum >= s /*?*/) {
+      // shrink the window
+      minLength = Math.min(minLength, (windowEnd - windowStart) + 1) //?
+      windowSum -= input[windowStart] //?
+      windowStart += 1
+
     }
   }
 
-  return max
+  return minLength
 }
 
 
 
-describe("max_sub_array_of_size_k", () => {
-  it("Input: [2, 1, 5, 1, 3, 2], k = 3,Output: 9", () => {
-    const k = 3
-    const arr = [2, 1, 5, 1, 3, 2]
-    const output = 9
-    expect(max_sub_array_of_size_k(k, arr)).toBe(output)
+
+describe("smallest_subarray_with_a_greater_sum", () => {
+  it("", () => {
+    const s = 7
+    const input = [2, 1, 5, 2, 3, 2]
+    const output = 2
+    expect(smallest_subarray_with_a_greater_sum(input, s)).toBe(output)
   });
 
-  it("Input: [2, 3, 4, 1, 5], k = 2, Output: 7", () => {
-    const k = 2
-    const arr = [2, 3, 4, 1, 5]
-    const output = 7
-    expect(max_sub_array_of_size_k(k, arr)).toBe(output)
+  it("", () => {
+    const s = 7
+    const input = [2, 1, 5, 2, 8]
+    const output = 1
+    expect(smallest_subarray_with_a_greater_sum(input, s)).toBe(output)
+  });
+
+  it("", () => {
+    const s = 8
+    const input = [3, 4, 1, 1, 6]
+    const output = 3
+    expect(smallest_subarray_with_a_greater_sum(input, s)).toBe(output)
   });
 })
 

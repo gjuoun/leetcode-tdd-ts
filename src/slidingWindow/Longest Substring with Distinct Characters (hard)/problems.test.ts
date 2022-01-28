@@ -1,4 +1,26 @@
+/**
+Problem Statement#
+Given a string, find the length of the longest substring, which has all distinct characters.
 
+Example 1:
+
+Input: String="aabccbb"
+Output: 3
+Explanation: The longest substring with distinct characters is "abc".
+
+Example 2:
+
+Input: String="abbbb"
+Output: 2
+Explanation: The longest substring with distinct characters is "ab".
+
+Example 3:
+
+Input: String="abccde"
+Output: 3
+Explanation: Longest substrings with distinct characters are "abc" & "cde".
+
+ */
 
 // const length_of_longest_substring = (input: string) => {
 //   let startIndex = 0, maxLength = 0
@@ -25,26 +47,25 @@
 
 const length_of_longest_substring = (input: string) => {
   let windowStart = 0, maxLength = 0
-  let map: Record<string, number> = {}
+  let map:Record<string, number> ={}
 
-  for(let windowEnd = 0; windowEnd< input.length; windowEnd ++){
-    let rightChar = input[windowEnd]
-    
-    // a: 0 may exist
+  for(let windowEnd = 0; windowEnd < input.length; windowEnd ++){
+    const rightChar = input[windowEnd]
+
+    // map[rightChar] may be 0
     if(map[rightChar] >= 0){
-      windowStart = Math.max(windowStart, map[rightChar] + 1)
+      windowStart = Math.max(windowStart, map[rightChar]+ 1)
     }
 
     map[rightChar] = windowEnd
 
     const windowSize = (windowEnd - windowStart) + 1
-
-    maxLength = Math.max(maxLength, windowSize)
-
+    maxLength = Math.max(windowSize, maxLength)
   }
+  
+ 
 
   return maxLength
-
 }
 
 

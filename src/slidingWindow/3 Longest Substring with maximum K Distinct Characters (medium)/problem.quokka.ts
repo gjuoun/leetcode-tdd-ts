@@ -1,4 +1,4 @@
-const longest_substring_with_k_distinct_quokka = (str: string, k: number) => {
+export const longest_substring_with_k_distinct_quokka1 = (str: string, k: number) => {
   let windowStart = 0, maxLength = 0;
   let map = new Map<string, number>()
 
@@ -30,7 +30,35 @@ const longest_substring_with_k_distinct_quokka = (str: string, k: number) => {
   return maxLength //? 
 }
 
+export const longest_substring_with_k_distinct_quokka = (input: string, k: number) => {
+  let windowStart = 0, maxLength = 0;
+  let map: Record<string, number> = {}
 
+  for(let windowEnd = 0; windowEnd < input.length; windowEnd +=1){
+    const rightChar = input[windowEnd]
+
+    if(map[rightChar] >= 0) { // exists
+      map[rightChar] += 1 // remember the end index
+    }else{
+      map[rightChar] = 1
+    }
+
+    while(Object.keys(map).length > k){
+      // shrink the map
+      const leftChar = input[windowStart]
+      if(map[leftChar] > 1){
+        map[leftChar] -= 1
+      }else{
+        delete map[leftChar]
+      }
+      windowStart += 1
+    }
+
+    maxLength = Math.max(maxLength, windowEnd - windowStart + 1)
+  }
+
+  return maxLength //?
+}
 
 
 console.log(longest_substring_with_k_distinct_quokka('araaci', 2)); // should be 4

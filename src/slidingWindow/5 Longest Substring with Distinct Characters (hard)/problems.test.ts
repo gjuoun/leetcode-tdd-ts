@@ -25,8 +25,6 @@ Explanation: Longest substrings with distinct characters are "abc" & "cde".
 import { longest_substring_with_distinct_characters_quokka } from "./problem.quokka";
 
 
-
-
 // time complexity: O(n), space complexity: O(1)
 
 describe("no_repeat_substring", () => {

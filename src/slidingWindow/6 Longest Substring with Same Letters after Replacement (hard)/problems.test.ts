@@ -23,40 +23,40 @@ Explanation: Replace the 'b' or 'd' with 'c' to have the longest repeating subst
 
  */
 
-const length_of_longest_substring_same = (input: string, k: number) => {
-  let windowStart = 0, windowEnd = 0;
-  let maxRepeatCount = 0, max = 0;
-  let letterMap: Record<string, number> = {}
+// const length_of_longest_substring_same = (input: string, k: number) => {
+//   let windowStart = 0, windowEnd = 0;
+//   let maxRepeatCount = 0, max = 0;
+//   let letterMap: Record<string, number> = {}
 
-  for (windowEnd = 0; windowEnd < input.length; windowEnd++) {
-    let rightChar = input[windowEnd]
-    if (!letterMap[rightChar]) {
-      letterMap[rightChar] = 1
-    }else{
-      // add one count to the frequency
-      letterMap[rightChar] = letterMap[rightChar] + 1
-    }
+//   for (windowEnd = 0; windowEnd < input.length; windowEnd++) {
+//     let rightChar = input[windowEnd]
+//     if (!letterMap[rightChar]) {
+//       letterMap[rightChar] = 1
+//     }else{
+//       // add one count to the frequency
+//       letterMap[rightChar] = letterMap[rightChar] + 1
+//     }
 
-    maxRepeatCount = Math.max(maxRepeatCount, letterMap[rightChar]) // maxRepeat = 2 at `bccbb`
+//     maxRepeatCount = Math.max(maxRepeatCount, letterMap[rightChar]) // maxRepeat = 2 at `bccbb`
 
-    const currWindowSize = (windowEnd - windowStart) + 1
-    const remainingLetters = currWindowSize - maxRepeatCount // aabccbb at `bccbb` -> remainingLetters = 
+//     const currWindowSize = (windowEnd - windowStart) + 1
+//     const remainingLetters = currWindowSize - maxRepeatCount // aabccbb at `bccbb` -> remainingLetters = 
 
-    // too many remaining letters, should shrink the window
-    if (remainingLetters > k) {
-      const leftChar = input[windowStart]
-      letterMap[leftChar] = letterMap[leftChar] - 1 // reduce the frequency of the leftChar
-      windowStart++
-    }else{
-      // remaining letters <= k, meaning we can replace the rest of the letters
-    }
+//     // too many remaining letters, should shrink the window
+//     if (remainingLetters > k) {
+//       const leftChar = input[windowStart]
+//       letterMap[leftChar] = letterMap[leftChar] - 1 // reduce the frequency of the leftChar
+//       windowStart++
+//     }else{
+//       // remaining letters <= k, meaning we can replace the rest of the letters
+//     }
 
-    const finalWindowSize = (windowEnd - windowStart) + 1
-    max = Math.max(max, finalWindowSize)
-  }
+//     const finalWindowSize = (windowEnd - windowStart) + 1
+//     max = Math.max(max, finalWindowSize)
+//   }
 
-  return max
-}
+//   return max
+// }
 
 
 describe("length_of_longest_substring_same", () => {

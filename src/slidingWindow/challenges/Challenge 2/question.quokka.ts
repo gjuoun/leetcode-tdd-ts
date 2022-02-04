@@ -54,4 +54,4 @@ export const string_anagrams = (input: string, pattern: string) => {
 
 
 console.log(string_anagrams('ppqp', 'pq')); //? should be [1,2]
-console.log(string_anagrams('abbcabc', 'abc')); //? shoule be [2,3,4]
+// console.log(string_anagrams('abbcabc', 'abc')); //? shoule be [2,3,4]

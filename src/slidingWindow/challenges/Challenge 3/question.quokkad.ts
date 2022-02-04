@@ -96,7 +96,7 @@ export const smallest_window_containing_subinputing = (input: string, pattern: s
     if (rightChar in charMap) {
       rightChar
       charMap[rightChar] -= 1 //?
-      if (charMap[rightChar] >= 0) {
+      if (charMap[rightChar] >= 0) { //! very important
         matched += 1
       }
     }

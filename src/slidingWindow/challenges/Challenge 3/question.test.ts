@@ -1,4 +1,4 @@
-import { smallest_window_containing_subinputing } from "./question.quokkad"
+import { smallest_window_containing_subinputing } from "./question.quokka"
 
 describe('String Anagrams (hard)#', () => {
 

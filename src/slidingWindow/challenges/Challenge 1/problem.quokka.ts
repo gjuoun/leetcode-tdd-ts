@@ -77,7 +77,7 @@ export const permutation_in_a_string_qk = (input: string, pattern: string) => {
     }
 
     
-    if(windowEnd >= pattern.length -1){
+    if(windowEnd/*?*/ >= pattern.length -1 /*?*/){ 
       const leftChar = input[windowStart] //?
       
       if(leftChar in freqMap){
@@ -96,5 +96,5 @@ export const permutation_in_a_string_qk = (input: string, pattern: string) => {
 }
 
 // console.log(permutation_in_a_string_qk('bcdxabcdy', 'bcdyabcdx')); // true
-// console.log(permutation_in_a_string_qk('oidbcaf', 'abc')); //true
-console.log(permutation_in_a_string_qk('odicf', 'dc')); //false
+console.log(permutation_in_a_string_qk('oidbcaf', 'abc')); //true
+// console.log(permutation_in_a_string_qk('odicf', 'dc')); //false

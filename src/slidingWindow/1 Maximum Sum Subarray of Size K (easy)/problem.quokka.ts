@@ -14,7 +14,7 @@ const maximum_sum_subarray_of_size_k_quokka = (input: number[], k: number): numb
     maximum = Math.max(maximum, sum) //?
   }
 
-  return maximum
+  return maximum  
 }
 
 

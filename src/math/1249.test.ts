@@ -17,14 +17,12 @@ function minRemoveToMakeValid(s: string): string {
   }
 
   // remove all the indexes that are in the bracketStack array
-  while (bracketStack.length > 0) {
-    indexToRemove.push(bracketStack.pop());
-  }
+  bracketStack.forEach((index) => {
+    indexToRemove.push(index);
+  });
 
   for (let i = 0; i < s.length; i++) {
-    if (indexToRemove.includes(i)) {
-      continue;
-    } else {
+    if (!indexToRemove.includes(i)) {
       newString += s[i];
     }
   }

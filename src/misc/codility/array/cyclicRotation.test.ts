@@ -36,47 +36,42 @@
 // In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
 
 const cyclicRotation = (arr: number[], rotateTimes: number) => {
-  if (rotateTimes === arr.length) return arr
-  if (arr.length === 0) return arr
+  if (rotateTimes === arr.length) return arr;
+  if (arr.length === 0) return arr;
 
-  let newArr = arr
+  let newArr = arr;
   for (let i = 1; i <= rotateTimes; i++) {
-    newArr = rotate(newArr)
+    newArr = rotate(newArr);
   }
-  return newArr
-
-}
+  return newArr;
+};
 
 const rotate = (arr: number[]) => {
-  const lastIndex = arr.length - 1
-  const newSlice = arr.slice(0, lastIndex)
-  newSlice.unshift(arr[lastIndex])
-  return newSlice
-}
+  const lastIndex = arr.length - 1;
+  const newSlice = arr.slice(0, lastIndex);
+  newSlice.unshift(arr[lastIndex]);
+  return newSlice;
+};
 
+describe("Cyclic Rotation", function () {
+  let A: number[], K: number, output: number[];
+  it("A = [], K =3, output = [] ", function () {
+    (A = []), (K = 3), (output = []);
+    expect(cyclicRotation(A, K)).toEqual(output);
+  });
 
-describe('Cyclic Rotation', function () {
+  it("A = [3, 8, 9, 7, 6], K =3, output = [9, 7, 6, 3, 8] ", function () {
+    (A = [3, 8, 9, 7, 6]), (K = 3), (output = [9, 7, 6, 3, 8]);
+    expect(cyclicRotation(A, K)).toEqual(output);
+  });
 
-  let A: number[], K: number, output: number[]
-  it('A = [], K =3, output = [] ', function () {
-    A = [], K = 3, output = []
-    expect(cyclicRotation(A, K)).toEqual(output)
-  })
+  it("A = [0, 0, 0], K = 1, output =  [0, 0, 0]", function () {
+    (A = [0, 0, 0]), (K = 1), (output = [0, 0, 0]);
+    expect(cyclicRotation(A, K)).toEqual(output);
+  });
 
-  it('A = [3, 8, 9, 7, 6], K =3, output = [9, 7, 6, 3, 8] ', function () {
-    A = [3, 8, 9, 7, 6], K = 3, output = [9, 7, 6, 3, 8]
-    expect(cyclicRotation(A, K)).toEqual(output)
-  })
-
-  it('A = [0, 0, 0], K = 1, output =  [0, 0, 0]', function () {
-    A = [0, 0, 0], K = 1, output = [0, 0, 0]
-    expect(cyclicRotation(A, K)).toEqual(output)
-  })
-
-  it('A = [1, 2, 3, 4], K = 4, output = [1, 2, 3, 4]', function () {
-    A = [1, 2, 3, 4], K = 4, output = [1, 2, 3, 4]
-    expect(cyclicRotation(A, K)).toEqual(output)
-  })
-
-
-})
+  it("A = [1, 2, 3, 4], K = 4, output = [1, 2, 3, 4]", function () {
+    (A = [1, 2, 3, 4]), (K = 4), (output = [1, 2, 3, 4]);
+    expect(cyclicRotation(A, K)).toEqual(output);
+  });
+});

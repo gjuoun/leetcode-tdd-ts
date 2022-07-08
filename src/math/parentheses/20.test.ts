@@ -25,8 +25,6 @@ function isValid(s: string): boolean {
   return stack.length === 0;
 }
 
-isValid("{[]}"); //?
-
 describe("20. Valid Parentheses", () => {
   it("()", () => {
     expect(isValid("()")).toBe(true);
@@ -38,5 +36,9 @@ describe("20. Valid Parentheses", () => {
 
   it("(]", () => {
     expect(isValid("(]")).toBe(false);
+  });
+
+  it("[{}]", () => {
+    expect(isValid("[{}]")).toBe(true);
   });
 });

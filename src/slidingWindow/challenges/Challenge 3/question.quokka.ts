@@ -61,8 +61,8 @@
 //     }
 //   }
 
-//   if (minLength > input.length) { 
-//     // doesn't find 
+//   if (minLength > input.length) {
+//     // doesn't find
 //     return '';
 //   } else {
 //     subinputStart
@@ -71,74 +71,71 @@
 //   }
 // }
 
+export const smallest_window_containing_subinputing = (
+  input: string,
+  pattern: string
+) => {
+  let windowStart = 0,
+    matchedCount = 0;
+  let minLength = input.length + 1,
+    substringStart = 0;
+  let freqMap: Record<string, number> = {};
 
-export const smallest_window_containing_subinputing = (input: string, pattern: string) => {
-  let windowStart = 0, matchedCount = 0;
-  let minLength = input.length + 1, substringStart = 0; 
-  let freqMap: Record<string, number> = {}
-
-  for(let i = 0; i < pattern.length; i++) {
-    const char = pattern[i]
-    if(char in freqMap){
-      freqMap[char] += 1; 
-    }else{
-      freqMap[char] = 1
+  for (let i = 0; i < pattern.length; i++) {
+    const char = pattern[i];
+    if (char in freqMap) {
+      freqMap[char] += 1;
+    } else {
+      freqMap[char] = 1;
     }
   }
 
-  for(let windowEnd = 0; windowEnd < input.length; windowEnd += 1){
-    const rightChar = input[windowEnd] //?
+  for (let windowEnd = 0; windowEnd < input.length; windowEnd += 1) {
+    const rightChar = input[windowEnd]; //?
 
-    if(rightChar in freqMap){
-      rightChar 
-      freqMap[rightChar] -= 1 //?
-      // is larger and equal is because we want to only count the number to match pattern length 
-      if(freqMap[rightChar] >= 0 ){ 
-        freqMap[rightChar/*?*/]/*?*/ 
-        matchedCount += 1 //?
+    if (rightChar in freqMap) {
+      rightChar;
+      freqMap[rightChar] -= 1; //?
+      // is larger and equal is because we want to only count the number to match pattern length
+      if (freqMap[rightChar] >= 0) {
+        freqMap[rightChar /*?*/]; /*?*/
+        matchedCount += 1; //?
       }
-      freqMap
+      freqMap;
     }
-    
-    matchedCount 
 
-    while(matchedCount === pattern.length){
+    matchedCount;
+
+    while (matchedCount === pattern.length) {
       // compare windowSize with minLength
-      const windowSize = windowEnd - windowStart + 1 //?
-      if(minLength > windowSize){
+      const windowSize = windowEnd - windowStart + 1; //?
+      if (minLength > windowSize) {
         // memorize the minLength and substringStart
-        minLength = windowSize  //?
-        substringStart = windowStart  //?
+        minLength = windowSize; //?
+        substringStart = windowStart; //?
       }
 
-      const leftChar = input[windowStart]  //?
-      windowStart += 1
+      const leftChar = input[windowStart]; //?
+      windowStart += 1;
 
       // move the window as needed
-      if(leftChar in freqMap){
-        freqMap[leftChar/*?*/]/*?*/ 
+      if (leftChar in freqMap) {
+        freqMap[leftChar /*?*/]; /*?*/
 
-        if(freqMap[leftChar] === 0){
-          matchedCount -= 1 //?
+        if (freqMap[leftChar] === 0) {
+          matchedCount -= 1; //?
         }
 
-        freqMap[leftChar] += 1  //?
+        freqMap[leftChar] += 1; //?
       }
     }
   }
 
-  if(minLength > input.length){
-    return ''
-  }else{
-    substringStart
-    minLength 
-    return input.slice(substringStart, substringStart + minLength) //?
+  if (minLength > input.length) {
+    return "";
+  } else {
+    substringStart;
+    minLength;
+    return input.slice(substringStart, substringStart + minLength); //?
   }
-
-}
-
-
-
-console.log(smallest_window_containing_subinputing('aabdec', 'abc')); // 'abdec' 
-// console.log(smallest_window_containing_subinputing('abdbca', 'abc')); // 'bca' 
-// console.log(smallest_window_containing_subinputing('adcad', 'abc')); // '' 
+};

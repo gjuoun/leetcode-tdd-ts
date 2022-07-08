@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/jest': ^27.4.0
+  '@types/node': ^18.0.3
   '@types/winston': ^2.4.4
   jest: ^27.4.7
   ts-jest: ^27.1.3
@@ -14,6 +15,7 @@ dependencies:
 
 devDependencies:
   '@types/jest': 27.5.2
+  '@types/node': 18.0.3
   '@types/winston': 2.4.4
 
 packages:
@@ -674,7 +676,6 @@ packages:
 
   /@types/node/18.0.3:
     resolution: {integrity: sha512-HzNRZtp4eepNitP+BD6k2L6DROIDG4Q0fm4x+dwfsr6LGmROENnok75VGw40628xf+iR24WeMFcHuuBDUAzzsQ==}
-    dev: false
 
   /@types/prettier/2.6.3:
     resolution: {integrity: sha512-ymZk3LEC/fsut+/Q5qejp6R9O1rMxz3XaRHDV6kX8MrGAhOSPqVARbDi+EZvInBpw+BnCX3TD240byVkOfQsHg==}

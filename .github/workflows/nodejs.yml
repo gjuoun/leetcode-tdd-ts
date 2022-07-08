@@ -21,4 +21,5 @@ jobs:
       with:
         node-version: 16
     - run: npm i -g pnpm
+    - run: pnpm i
     - run: pnpm test

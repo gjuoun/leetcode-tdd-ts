@@ -12,8 +12,7 @@
       "args": ["--runInBand"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true
+      "internalConsoleOptions": "neverOpen"
     },
     {
       "type": "node",
